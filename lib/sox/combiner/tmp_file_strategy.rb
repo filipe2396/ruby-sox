@@ -71,7 +71,10 @@ module Sox
     #
     # @return [String] path to temporary file
     def gen_tmp_filename
-      Dir::Tmpname.make_tmpname ['/tmp/ruby-sox', ".#{MEDIATE_TYPE}"], nil
+      time = Time.now.strftime('%Y%m%d')
+      name = "ruby-sox#{time}-#{Process.pid}-#{rand(0x100000000).to_s(36)}.#{MEDIATE_TYPE}"
+
+      ::File.join(Dir.tmpdir, name)
     end
     private :gen_tmp_filename
   end
