@@ -42,6 +42,9 @@ RSpec.configure do |config|
   #
   # @return [String] filename
   def gen_tmp_filename(ext = 'mp3')
-    Dir::Tmpname.make_tmpname ['/tmp/ruby-sox-test', ".#{ext}"], nil
+    time = Time.now.strftime('%Y%m%d')
+    name = "ruby-sox-test#{time}-#{Process.pid}-#{rand(0x100000000).to_s(36)}.#{ext}"
+
+    ::File.join(Dir.tmpdir, name)
   end
 end
