@@ -13,7 +13,7 @@ shared_examples_for "combiner" do |options|
   let(:output_file) { gen_tmp_filename('mp3') }
 
   after do
-    FileUtils.rm output_file if File.exists?(output_file)
+    FileUtils.rm output_file if File.exist?(output_file)
   end
 
 
@@ -30,7 +30,7 @@ shared_examples_for "combiner" do |options|
                                      :strategy => strategy)
         combiner.write(output_file)
 
-        File.exists?(output_file).should be_true
+        File.exist?(output_file).should be_true
         output_file.should have_rate(44100)
         output_file.should have_channels(2)
         output_file.should sound_like output_fixture("d_g1_g2_g3_mixed_c2_r44100.flac")
@@ -43,7 +43,7 @@ shared_examples_for "combiner" do |options|
                                       :strategy => strategy )
         combiner.write(output_file)
 
-        File.exists?(output_file).should be_true
+        File.exist?(output_file).should be_true
         # Test default options
         output_file.should have_rate(22050)
         output_file.should have_channels(1)
@@ -62,7 +62,7 @@ shared_examples_for "combiner" do |options|
                                       :strategy => strategy )
         combiner.write(output_file)
 
-        File.exists?(output_file).should be_true
+        File.exist?(output_file).should be_true
         output_file.should sound_like output_fixture("d_g2_g3_mixed_c1_r22050.mp3")
       end
 
@@ -75,7 +75,7 @@ shared_examples_for "combiner" do |options|
                                         :strategy => strategy )
           combiner.write(output_file)
 
-          File.exists?(output_file).should be_true
+          File.exist?(output_file).should be_true
           output_file.should sound_like output_fixture("d_g2_g3_mixed_c1_r22050_norm.mp3")
         end
       end
@@ -89,7 +89,7 @@ shared_examples_for "combiner" do |options|
                                       :strategy => strategy )
         combiner.write(output_file)
 
-        File.exists?(output_file).should be_true
+        File.exist?(output_file).should be_true
         output_file.should sound_like output_fixture("drums.mp3")
       end
     end
@@ -121,7 +121,7 @@ shared_examples_for "combiner" do |options|
 
         after do
           big_input_files.each do |file|
-            FileUtils.rm file if File.exists?(file)
+            FileUtils.rm file if File.exist?(file)
           end
         end
 

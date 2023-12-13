@@ -5,7 +5,7 @@ describe "Sox::Cmd integration" do
   let(:output_file) { gen_tmp_filename('mp3') }
 
   after do
-    FileUtils.rm output_file if File.exists?(output_file)
+    FileUtils.rm output_file if File.exist?(output_file)
   end
 
 
@@ -21,7 +21,7 @@ describe "Sox::Cmd integration" do
       .set_effects(:rate => 44100, :channels => 2)
       .run
 
-    File.exists?(output_file).should be_true
+    File.exist?(output_file).should be_true
     output_file.should have_rate(44100)
     output_file.should have_channels(2)
     output_file.should sound_like output_fixture("g2_g3_mixed_r44100_c2.mp3")
@@ -36,7 +36,7 @@ describe "Sox::Cmd integration" do
       .set_effects(:chorus => '0.99 0.9 55 0.4 0.25 2 -s')
       .run
 
-    File.exists?(output_file).should be_true
+    File.exist?(output_file).should be_true
     output_file.should sound_like output_fixture("drums_chorus.mp3")
   end
 end

@@ -27,7 +27,7 @@ module Sox
       sh(cmd)
     ensure
       # Remove temporary files
-      tmp_files.each { |file| FileUtils.rm(file) if ::File.exists?(file) }
+      tmp_files.each { |file| FileUtils.rm(file) if ::File.exist?(file) }
     end
 
     # Build +sox+ command to get final output.
